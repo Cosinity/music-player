@@ -7,26 +7,30 @@ import java.util.List;
  */
 public interface MusicPlayerModel {
   /**
-   * Adds the given note to the piece
+   * Adds the given note to the piece at the given beat
    *
    * @param n The note to be added to the piece
+   * @param beat The beat to add the given note at
+   * @throws IllegalArgumentException if the beat is less than 1
    */
-  void read(Note n);
+  void read(Note n, int beat);
 
   /**
-   * Adds the given notes to the piece
+   * Adds the given notes to the piece at the given beats
    *
    * @param n The notes to be added to the piece, in a List
+   * @param beats The beats to place the respective notes at
+   * @throws IllegalArgumentException if there are not the same number of notes and beats or a beat
+   *                                  is less than 1
    */
-  void read(List<Note> n);
+  void read(List<Note> n, List<Integer> beats);
 
   /**
-   * Gets the notes at the given beat of the piece. If the beat is not in the piece (less than 0 or
-   * greater than the length of the piece), throws an IllegalArgumentException
+   * Gets the notes at the given beat of the piece.
    *
    * @param beat The beat of the piece to get the notes from
    * @return A List of the notes at the given beat
-   * @throws IllegalArgumentException if the beat is not within the piece
+   * @throws IllegalArgumentException if the beat is less than 1
    */
   List<Note> getNotes(int beat);
 

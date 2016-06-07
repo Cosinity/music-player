@@ -7,12 +7,12 @@ import java.util.List;
  */
 public class MusicPlayer implements MusicPlayerModel {
   @Override
-  public void read(Note n) {
+  public void read(Note n, int beat) {
 
   }
 
   @Override
-  public void read(List<Note> n) {
+  public void read(List<Note> n, List<Integer> beats) {
 
   }
 
