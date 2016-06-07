@@ -13,7 +13,7 @@ public interface MusicPlayerModel {
    * @param beat The beat to add the given note at
    * @throws IllegalArgumentException if the beat is less than 1
    */
-  void read(Note n, int beat);
+  void write(Note n, int beat);
 
   /**
    * Adds the given notes to the piece at the given beats
@@ -23,7 +23,7 @@ public interface MusicPlayerModel {
    * @throws IllegalArgumentException if there are not the same number of notes and beats or a beat
    *                                  is less than 1
    */
-  void read(List<Note> n, List<Integer> beats);
+  void write(List<Note> n, List<Integer> beats);
 
   /**
    * Gets the notes at the given beat of the piece.
@@ -33,6 +33,25 @@ public interface MusicPlayerModel {
    * @throws IllegalArgumentException if the beat is less than 1
    */
   List<Note> getNotes(int beat);
+
+  /**
+   * Removes the given note at the given beat
+   *
+   * @param n The note to be removed
+   * @param beat The beat the note should be removed from
+   * @throws IllegalArgumentException If the given note cannot be found at the given beat
+   */
+  void remove(Note n, int beat);
+
+  /**
+   * Changes the first given note at the given beat to the second given note
+   *
+   * @param n1 The note to be changed
+   * @param beat The beat of the note to be changed
+   * @param n2 The note to be changed to
+   * @throws IllegalArgumentException If the note cannot be found at the given beat
+   */
+  void change(Note n1, int beat, Note n2);
 
   /**
    * Returns a string that gives the current piece when displayed
@@ -46,5 +65,4 @@ public interface MusicPlayerModel {
    * @returns A string that represents the current piece
    */
   String getSong();
-
 }
