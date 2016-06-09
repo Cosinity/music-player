@@ -10,15 +10,25 @@ import static java.util.Arrays.asList;
  */
 public class MusicPlayer implements MusicPlayerModel {
   private ArrayList<ArrayList<Note>> notes;
+  private Note lowNote;
+  private Note highNote;
 
   public MusicPlayer() {
     notes = new ArrayList<ArrayList<Note>>();
+    lowNote = null;
+    highNote = null;
   }
 
   @Override
   public void write(Note n, int beat) {
     if (beat < 1) {
       throw new IllegalArgumentException("Invalid beat");
+    }
+    if (lowNote == null || n.compareTo(lowNote) < 0) {
+      lowNote = n;
+    }
+    if (highNote == null || n.compareTo(highNote) > ) {
+      highNote = n;
     }
     while (beat + n.getDuration() > notes.size()) {
       notes.add(new ArrayList<Note>());
